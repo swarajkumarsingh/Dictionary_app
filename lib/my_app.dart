@@ -1,6 +1,6 @@
+import 'package:dictionary/utils/navigator.dart';
+import 'package:dictionary/utils/snackbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,58 +8,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Dem',
+      title: 'Flutter Demo',
+      navigatorKey: navigatorKey,
+      scaffoldMessengerKey: snackbarKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHome(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyHome extends StatelessWidget {
+  static const String routeName = "/product-details";
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  const MyHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print(dotenv.env["ENV_SENTRY_DSN"]);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Text(
-            //   environment.getSentryDSN,
-            // ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Text("Hello World"),
       ),
     );
   }

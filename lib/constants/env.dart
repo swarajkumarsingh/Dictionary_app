@@ -1,12 +1,27 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-final environmentVariables = _Environment();
+final env = _Environment();
 
 class _Environment {
-  final String _ENV_SENTRY_DNS = "ENV_SENTRY_DSN";
+  Future<void> initEnv() async {
+    await dotenv.load(fileName: env.fileName);
+  }
 
-  // addition fun
+  String get getSentryDSN {
+    return dotenv.get(environmentVariables.ENV_SENTRY_DNS, fallback: "");
+  }
+
+  String get getSentryEnvironment {
+    return dotenv.get(environmentVariables.SENTRY_ENVIRONMENT,
+        fallback: environmentVariables.LOCAL);
+  }
+
+  String getString(String key, {String defaultValue = ""}) {
+    return dotenv.get(key, fallback: defaultValue);
+  }
 
   String get fileName {
     if (kReleaseMode) {
@@ -14,16 +29,12 @@ class _Environment {
     }
     return ".env.development";
   }
+}
 
-  String get getSentryDSN {
-    return dotenv.get(_ENV_SENTRY_DNS, fallback: "");
-  }
+final environmentVariables = _EnvironmentVariables();
 
-  Future<void> initEnv() async {
-    await dotenv.load(fileName: environmentVariables.fileName);
-  }
-
-  String getString(String key, {String fallback = ""}) {
-    return dotenv.get(key, fallback: fallback);
-  }
+class _EnvironmentVariables {
+  final String ENV_SENTRY_DNS = "SENTRY_DSN";
+  final String SENTRY_ENVIRONMENT = "SENTRY_ENVIRONMENT";
+  final String LOCAL = "local";
 }
