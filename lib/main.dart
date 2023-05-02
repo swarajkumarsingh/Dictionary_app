@@ -1,12 +1,10 @@
-// ignore_for_file: unused_local_variable
-
 import 'dart:async';
 import 'dart:isolate';
 
-import 'package:dictionary/config.dart';
-import 'package:dictionary/constants/env.dart';
-import 'package:dictionary/error_tracker/error_tracker.dart';
-import 'package:dictionary/my_app.dart';
+import 'config.dart';
+import 'constants/env.dart';
+import 'error_tracker/error_tracker.dart';
+import 'my_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:restart_app/restart_app.dart';

@@ -1,5 +1,5 @@
-import 'package:dictionary/assets.dart';
-import 'package:dictionary/utils/network/network_utils.dart';
+import '../assets.dart';
+import '../utils/network/network_utils.dart';
 import 'package:flutter/material.dart';
 
 
