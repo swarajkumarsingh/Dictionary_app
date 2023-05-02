@@ -197,7 +197,7 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 198, 197, 197),
-        onPressed: () async {},
+        onPressed: () async => readNews(),
         child: Icon(
           getIcon(),
           color: Colors.black,

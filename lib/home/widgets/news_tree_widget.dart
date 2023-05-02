@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import '../../common/loader.dart';
 import '../../constants/constants.dart';
 import '../services/home_services.dart';
 import 'news_widget.dart';
@@ -27,7 +28,7 @@ class NewsContainer extends StatelessWidget {
             snapshot: snapshot,
           );
         }
-        return const Center(child: CircularProgressIndicator());
+        return const Loader();
       },
     );
   }
@@ -52,11 +53,10 @@ class NewsListView extends StatelessWidget {
         return const Divider();
       },
       itemBuilder: (context, index) {
-        return 
-          NewsTreeWidget(
-            index: index,
-            json: json,
-          );
+        return NewsTreeWidget(
+          index: index,
+          json: json,
+        );
       },
     );
   }
