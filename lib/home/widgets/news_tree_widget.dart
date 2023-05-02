@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import '../../common/loader.dart';
 import '../../constants/constants.dart';
 import '../services/home_services.dart';
