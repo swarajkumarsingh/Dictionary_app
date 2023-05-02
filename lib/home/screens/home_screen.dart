@@ -1,12 +1,12 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
+
 import '../../dictionary/screens/dictionary_screen.dart';
+import '../../utils/navigator.dart';
+import '../../utils/snackbar.dart';
 import '../services/home_services.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/news_tree_widget.dart';
-import '../../utils/navigator.dart';
-import '../../utils/snackbar.dart';
-import 'package:animate_do/animate_do.dart';
-
-import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

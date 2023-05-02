@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../assets.dart';
 import '../utils/network/network_utils.dart';
-import 'package:flutter/material.dart';
 
 
 class NoInterNetScreen extends StatelessWidget {

@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
 import '../../common/loader.dart';
 import '../../constants/constants.dart';
-import '../services/home_services.dart';
-import 'news_widget.dart';
 import '../../news/screens/news_screen.dart';
 import '../../utils/navigator.dart';
-import 'package:flutter/material.dart';
+import '../services/home_services.dart';
+import 'news_widget.dart';
 
 class NewsContainer extends StatelessWidget {
   const NewsContainer({

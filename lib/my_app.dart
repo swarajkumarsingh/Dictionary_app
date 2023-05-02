@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'home/screens/home_screen.dart';
 import 'utils/navigator.dart';
 import 'utils/network/network_utils.dart';
 import 'utils/snackbar.dart';
-import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

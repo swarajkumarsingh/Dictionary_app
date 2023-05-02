@@ -1,4 +1,4 @@
-import 'package:dictionary/home/screens/home_screen.dart';
+import '../../home/screens/home_screen.dart';
 
 import '../../common/check_internet_screen.dart';
 import '../navigator.dart';
