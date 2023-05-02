@@ -1,3 +1,4 @@
+import 'package:dictionary/constants/hero_tags.dart';
 import 'package:flutter/material.dart';
 
 class NewsWidget extends StatelessWidget {

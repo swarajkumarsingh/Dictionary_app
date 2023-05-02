@@ -9,15 +9,17 @@ class Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: CircularProgressIndicator(
-          color: Colors.white70,
-          strokeWidth: 2.0,
-          semanticsLabel: semanticsLabel,
+    return Center(
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: CircularProgressIndicator(
+            color: Colors.black,
+            strokeWidth: 2.0,
+            semanticsLabel: semanticsLabel,
+          ),
         ),
       ),
     );

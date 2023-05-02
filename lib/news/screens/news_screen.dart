@@ -63,13 +63,6 @@ class _NewsScreenState extends State<NewsScreen> {
     });
   }
 
-  Future<void> _pauseNewsAudio() async {
-    if (_status == PlayStatus.playing) {
-      await tts.pause();
-      return _toggleStatus();
-    }
-  }
-
   Future<void> _toggleIconWhenAudioCompleted() async {
     tts.getTTS.setCompletionHandler(() async {
       await tts.stop();
@@ -86,8 +79,13 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Future<void> _startNewsAudio() async {
-    await _pauseNewsAudio();
+    if (_status == PlayStatus.playing) {
+      await tts.pause();
+      return _toggleStatus();
+    }
+
     await _toggleIconWhenAudioCompleted();
+
     await _startNewsAudioImple();
   }
 
@@ -201,13 +199,12 @@ class _NewsScreenState extends State<NewsScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        label: const Text("Speak"),
+        tooltip: "Speak",
         backgroundColor: const Color.fromARGB(255, 198, 197, 197),
         onPressed: () async => _startNewsAudio(),
-        child: Icon(
-          _getIcon(),
-          color: Colors.black,
-        ),
+        icon: Icon(_getIcon(), color: Colors.black),
       ),
     );
   }

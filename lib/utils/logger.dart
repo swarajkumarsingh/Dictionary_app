@@ -6,35 +6,35 @@ final _log = Logger(
   printer: PrettyPrinter(
     methodCount: 2,
     errorMethodCount: 8,
-    lineLength: 50,
+    lineLength: 1000,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    printTime: false,
   ),
 );
 
 class _CustomLogger {
-  void printInfo(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void info(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.i(message, extra, stackTrace);
   }
 
-  void printVerbose(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void verbose(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.v(message, extra, stackTrace);
   }
 
-  void printWtf(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void wtf(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.wtf(message, extra, stackTrace);
   }
 
-  void printDebug(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void debug(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.d(message, extra, stackTrace);
   }
 
-  void printWarning(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void warning(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.w(message);
   }
 
-  void printError(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
+  void error(dynamic message, [dynamic extra, StackTrace? stackTrace]) {
     _log.e(message);
   }
 }

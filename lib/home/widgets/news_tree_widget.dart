@@ -95,11 +95,12 @@ class NewsTreeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String link = json[index]["url"] ?? "";
-    String author = json[index]["author"] ?? "";
+    String link = json[index]["url"] ?? "No link provided";
+    String author = json[index]["author"] ?? "Unknown";
     String content = json[index]["content"] ?? "";
     String description = json[index]["description"] ?? "";
-    String publishedAt = json[index]["publishedAt"] ?? "";
+    String publishedAt =
+        json[index]["publishedAt"] ?? DateTime.now().toString();
     String title = json[index]["title"] ?? newsTitleStatic;
     String image = json[index]["urlToImage"] ?? newsImageStatic;
 
