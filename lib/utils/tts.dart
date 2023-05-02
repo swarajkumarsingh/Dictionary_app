@@ -13,6 +13,9 @@ class _TTS {
   _TTS(this.flutterTts);
   final FlutterTts flutterTts;
 
+  // getter for tts package
+  FlutterTts get getTTS => flutterTts;
+
   Future<void> init() async {
     if (Platform.isIOS) {
       await _flutterTts.setSharedInstance(true);
@@ -35,7 +38,7 @@ class _TTS {
     }
   }
 
-  Future<void> stop(String content) async {
+  Future<void> stop() async {
     try {
       await flutterTts.stop();
     } catch (e) {

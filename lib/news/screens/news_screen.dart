@@ -1,8 +1,7 @@
+import 'package:dictionary/news/services/news_services.dart';
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../utils/tts.dart';
-import '../../utils/snackbar.dart';
 import '../../utils/navigator.dart';
 import '../../utils/url_launcher.dart';
 
@@ -35,27 +34,18 @@ class _NewsScreenState extends State<NewsScreen> {
   PlayStatus _status = PlayStatus.paused;
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   void initState() {
     tts.init();
     super.initState();
   }
 
-  Future<void> shareApp() async {
-    try {
-      const urlPreview = "https://github.com/swarajkumarsingh/S_Dictionary";
-      await Share.share(
-          "GaadiDho is an Instant Bike Washing & Shining Subscription Service. GaadhiDho provides monthly subscription for Bike Wash, We are opening our Bike Washing Points on every 5 km to provide instant bike washing service.Free Download it from Google PlayStore  \n\n$urlPreview");
-    } catch (e) {
-      showSnackBar(msg: "Unable to share, Please try again later.");
-    }
+  @override
+  void dispose() {
+    tts.stop();
+    super.dispose();
   }
 
-  IconData getIcon() {
+  IconData _getIcon() {
     switch (_status) {
       case PlayStatus.playing:
         return Icons.pause;
@@ -73,16 +63,32 @@ class _NewsScreenState extends State<NewsScreen> {
     });
   }
 
-  Future<void> readNews() async {
+  Future<void> _pauseNewsAudio() async {
     if (_status == PlayStatus.playing) {
       await tts.pause();
       return _toggleStatus();
     }
+  }
+
+  Future<void> _toggleIconWhenAudioCompleted() async {
+    tts.getTTS.setCompletionHandler(() async {
+      await tts.stop();
+      _toggleStatus();
+    });
+  }
+
+  Future<void> _startNewsAudioImple() async {
     String content =
-        "${widget.title}.  ${widget.description} news reported by ${widget.author}";
+        "${widget.title}.  ${widget.description} news reported by ${widget.author} more on this news click the link below";
 
     _toggleStatus();
     await tts.speak(content);
+  }
+
+  Future<void> _startNewsAudio() async {
+    await _pauseNewsAudio();
+    await _toggleIconWhenAudioCompleted();
+    await _startNewsAudioImple();
   }
 
   @override
@@ -105,7 +111,7 @@ class _NewsScreenState extends State<NewsScreen> {
         ),
         actions: [
           InkWell(
-            onTap: () => shareApp(),
+            onTap: () async => await newServices.shareApp(),
             child: Container(
               margin: const EdgeInsets.only(right: 16),
               child: const Icon(
@@ -116,7 +122,7 @@ class _NewsScreenState extends State<NewsScreen> {
             ),
           ),
           InkWell(
-            onTap: () => shareApp(),
+            onTap: () async => await newServices.shareApp(),
             child: Container(
               margin: const EdgeInsets.only(right: 16),
               child: const Icon(
@@ -197,9 +203,9 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 198, 197, 197),
-        onPressed: () async => readNews(),
+        onPressed: () async => _startNewsAudio(),
         child: Icon(
-          getIcon(),
+          _getIcon(),
           color: Colors.black,
         ),
       ),
