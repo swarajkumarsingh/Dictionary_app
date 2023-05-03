@@ -1,5 +1,6 @@
-import 'package:dictionary/utils/snackbar.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../utils/snackbar.dart';
 
 final newServices = _NewsServices();
 

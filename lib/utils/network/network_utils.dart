@@ -1,9 +1,9 @@
-import '../../home/screens/home_screen.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../../common/check_internet_screen.dart';
+import '../../home/screens/home_screen.dart';
 import '../navigator.dart';
 import '../snackbar.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 final networkUtils = _NetworkUtils();
 bool _isLoggedIn = true;

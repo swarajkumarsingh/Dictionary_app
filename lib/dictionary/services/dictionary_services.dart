@@ -1,4 +1,4 @@
-import 'package:dictionary/dictionary/models/dictionary.dart';
+import '../models/dictionary.dart';
 
 abstract class DictionaryServices {
   Future<Dictionary?> get(String prompt);

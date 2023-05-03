@@ -1,10 +1,10 @@
-import 'package:dictionary/common/loader.dart';
-import 'package:dictionary/common/string_extension.dart';
-import 'package:dictionary/constants/color.dart';
-import 'package:dictionary/dictionary/services/dictionary_services_impl.dart';
-import 'package:dictionary/utils/navigator.dart';
-import 'package:dictionary/utils/spaces.dart';
-import 'package:dictionary/utils/tts.dart';
+import '../../common/loader.dart';
+import '../../common/string_extension.dart';
+import '../../constants/color.dart';
+import '../services/dictionary_services_impl.dart';
+import '../../utils/navigator.dart';
+import '../../utils/spaces.dart';
+import '../../utils/tts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

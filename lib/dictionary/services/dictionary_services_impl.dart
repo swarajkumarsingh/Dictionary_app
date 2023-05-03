@@ -1,7 +1,7 @@
-import 'package:dictionary/constants/status_code.dart';
-import 'package:dictionary/dictionary/models/dictionary.dart';
-import 'package:dictionary/dictionary/services/dictionary_services.dart';
-import 'package:dictionary/services/api.dart';
+import '../../constants/status_code.dart';
+import '../../services/api.dart';
+import '../models/dictionary.dart';
+import 'dictionary_services.dart';
 
 final dictionaryServicesImpl = DictionaryServicesImpl();
 

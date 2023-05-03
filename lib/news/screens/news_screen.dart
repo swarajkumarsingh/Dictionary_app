@@ -1,4 +1,4 @@
-import 'package:dictionary/news/services/news_services.dart';
+import '../services/news_services.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/tts.dart';
