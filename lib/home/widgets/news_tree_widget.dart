@@ -23,6 +23,9 @@ class NewsContainer extends StatelessWidget {
         if (snapshot.hasError) {
           return const Center(child: Text("No News Data"));
         }
+        if (snapshot.hasData && snapshot.data == null) {
+          return const Center(child: Text("No News Data"));
+        }
         if (snapshot.hasData) {
           return NewsListView(
             snapshot: snapshot,

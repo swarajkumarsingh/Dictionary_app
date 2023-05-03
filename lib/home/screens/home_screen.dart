@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:dictionary/home/services/home_services_impl.dart';
 import 'package:dictionary/pdf_viewer/screens/pdf_screen.dart';
 import 'package:dictionary/utils/snackbar.dart';
 import 'package:file_picker/file_picker.dart';
@@ -37,7 +38,7 @@ Future<void> pushToPDfScreen() async {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeServices client = HomeServices();
+  HomeServicesImpl client = HomeServicesImpl();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
