@@ -27,20 +27,22 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
     _init();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _promptController.dispose();
-  }
-
   Future<void> _init() async {
     _dictionaryHistory = await sf.getDictionaryHistory();
     setState(() {});
   }
 
   Future<void> _pushToDictionaryDetailsScreen(String prompt) async {
+    _promptController.clear();
     await sf.saveDictionaryHistory(prompt);
-    appRouter.pushOFFAll(DictionaryDetailScreen(prompt: prompt));
+    await _init();
+    appRouter.push(DictionaryDetailScreen(prompt: prompt));
+  }
+
+  @override
+  void dispose() {
+    _promptController.dispose();
+    super.dispose();
   }
 
   @override
@@ -77,11 +79,11 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                 const VerticalSpace(height: 20),
                 NameTextField(
                   text: "search here",
-                  autofocus: false,
                   controller: _promptController,
                   iconData: Icons.search_outlined,
-                  function: () =>
-                      _pushToDictionaryDetailsScreen(_promptController.text),
+                  function: () async => await _pushToDictionaryDetailsScreen(
+                    _promptController.text,
+                  ),
                 ),
                 const VerticalSpace(height: 30),
                 Row(
@@ -103,9 +105,10 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                         foregroundColor: colors.red,
                         shadowColor: colors.red,
                       ),
-                      onPressed: () {
-                        sf.clearDictionaryHistory;
-                        setState(() {});
+                      onPressed: () async {
+                        _promptController.clear();
+                        await sf.clearDictionaryHistory();
+                        await _init();
                       },
                       label: const Text("Clean"),
                       icon: Icon(
@@ -125,11 +128,17 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                           return const VerticalSpace(height: 10);
                         },
                         itemBuilder: (context, index) {
-                          return Text(
-                            _dictionaryHistory[index],
-                            style: GoogleFonts.libreBaskerville(
-                              textStyle: const TextStyle(
-                                color: Colors.black,
+                          return InkWell(
+                            onTap: () async =>
+                                await _pushToDictionaryDetailsScreen(
+                              _dictionaryHistory[index],
+                            ),
+                            child: Text(
+                              _dictionaryHistory[index],
+                              style: GoogleFonts.libreBaskerville(
+                                textStyle: const TextStyle(
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           );

@@ -49,7 +49,7 @@ class NameTextField extends StatelessWidget {
     this.textInputType = TextInputType.name,
     required this.controller,
     this.function,
-    required this.autofocus,
+     this.autofocus,
   }) : super(key: key);
 
   final String text;
@@ -68,7 +68,7 @@ class NameTextField extends StatelessWidget {
       height: height,
       child: TextFormField(
         controller: controller,
-        autofocus: autofocus!,
+        autofocus: autofocus ?? false,
         onEditingComplete: function ?? () {},
         keyboardType: textInputType,
         validator: (value) {

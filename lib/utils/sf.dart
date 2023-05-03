@@ -13,7 +13,7 @@ class _SFClass {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String> result = prefs.getStringList(DICTIONARY_HISTORY) ?? [];
-    if (result.contains(prompt)) {
+    if (result.contains(prompt.capitalize)) {
       return result;
     }
     result.add(prompt.capitalize);

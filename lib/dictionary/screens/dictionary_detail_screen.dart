@@ -1,7 +1,6 @@
 import 'package:dictionary/common/loader.dart';
 import 'package:dictionary/common/string_extension.dart';
 import 'package:dictionary/constants/color.dart';
-import 'package:dictionary/dictionary/screens/dictionary_screen.dart';
 import 'package:dictionary/dictionary/services/dictionary_services_impl.dart';
 import 'package:dictionary/utils/navigator.dart';
 import 'package:dictionary/utils/spaces.dart';
@@ -20,7 +19,7 @@ class DictionaryDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => appRouter.push(const DictionaryScreen()),
+          onPressed: () => appRouter.pop(),
           icon: Icon(
             Icons.arrow_back_outlined,
             size: 30,
@@ -34,6 +33,9 @@ class DictionaryDetailScreen extends StatelessWidget {
         future: dictionaryServicesImpl.get(prompt),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
+            if (snapshot.data == null) {
+              const Center(child: Text("No results found"));
+            }
             Dictionary dictionary = snapshot.data;
             return WidgetTree(
               dictionary: dictionary,
@@ -41,7 +43,7 @@ class DictionaryDetailScreen extends StatelessWidget {
             );
           }
           if (snapshot.hasError) {
-            return const Center(child: Text("Error connecting to server"));
+            return const Center(child: Text("No results found"));
           }
           return const Loader();
         },
@@ -89,7 +91,7 @@ class WidgetTree extends StatelessWidget {
                 ...dictionary.phonetics
                     .map(
                       (e) => Text(
-                        e.text,
+                        e.text ?? "",
                         style: TextStyle(
                           color: colors.blue,
                           fontWeight: FontWeight.w500,

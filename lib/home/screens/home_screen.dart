@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-Future<void> pushToDictionaryScreen() async {
+void _pushToDictionaryScreen() async {
   try {
     appRouter.push(const DictionaryScreen());
   } catch (e) {
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           FadeInRight(
             child: IconButton(
-              onPressed: () => pushToDictionaryScreen(),
+              onPressed: () => _pushToDictionaryScreen(),
               icon: const Icon(
                 Icons.search,
                 color: Colors.black,

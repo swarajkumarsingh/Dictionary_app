@@ -12,7 +12,6 @@ String dictionaryToJson(List<Dictionary> data) =>
 
 class Dictionary {
   String word;
-  String phonetic;
   List<Phonetic> phonetics;
   List<Meaning> meanings;
   License license;
@@ -20,7 +19,6 @@ class Dictionary {
 
   Dictionary({
     required this.word,
-    required this.phonetic,
     required this.phonetics,
     required this.meanings,
     required this.license,
@@ -29,7 +27,6 @@ class Dictionary {
 
   factory Dictionary.fromJson(Map<String, dynamic> json) => Dictionary(
         word: json["word"],
-        phonetic: json["phonetic"],
         phonetics: List<Phonetic>.from(
             json["phonetics"].map((x) => Phonetic.fromJson(x))),
         meanings: List<Meaning>.from(
@@ -40,7 +37,6 @@ class Dictionary {
 
   Map<String, dynamic> toJson() => {
         "word": word,
-        "phonetic": phonetic,
         "phonetics": List<dynamic>.from(phonetics.map((x) => x.toJson())),
         "meanings": List<dynamic>.from(meanings.map((x) => x.toJson())),
         "license": license.toJson(),
@@ -72,7 +68,7 @@ class Meaning {
   String partOfSpeech;
   List<Definition> definitions;
   List<String> synonyms;
-  List<dynamic> antonyms;
+  List<String> antonyms;
 
   Meaning({
     required this.partOfSpeech,
@@ -86,7 +82,7 @@ class Meaning {
         definitions: List<Definition>.from(
             json["definitions"].map((x) => Definition.fromJson(x))),
         synonyms: List<String>.from(json["synonyms"].map((x) => x)),
-        antonyms: List<dynamic>.from(json["antonyms"].map((x) => x)),
+        antonyms: List<String>.from(json["antonyms"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -126,30 +122,30 @@ class Definition {
 }
 
 class Phonetic {
-  String text;
   String audio;
   String? sourceUrl;
   License? license;
+  String? text;
 
   Phonetic({
-    required this.text,
     required this.audio,
     this.sourceUrl,
     this.license,
+    this.text,
   });
 
   factory Phonetic.fromJson(Map<String, dynamic> json) => Phonetic(
-        text: json["text"],
         audio: json["audio"],
         sourceUrl: json["sourceUrl"],
         license:
             json["license"] == null ? null : License.fromJson(json["license"]),
+        text: json["text"],
       );
 
   Map<String, dynamic> toJson() => {
-        "text": text,
         "audio": audio,
         "sourceUrl": sourceUrl,
         "license": license?.toJson(),
+        "text": text,
       };
 }
