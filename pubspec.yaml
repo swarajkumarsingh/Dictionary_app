@@ -33,6 +33,7 @@ dependencies:
   dio_smart_retry: ^5.0.0
   device_info_plus: ^8.2.2
   google_fonts: ^4.0.4
+  pdftron_flutter: ^1.0.1-12
 
 dev_dependencies:
   flutter_test:

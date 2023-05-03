@@ -1,9 +1,11 @@
-import '../services/news_services.dart';
+import 'package:dictionary/news/widget/news_widgets.dart';
+import 'package:dictionary/utils/snackbar.dart';
+
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../utils/tts.dart';
 import '../../utils/navigator.dart';
-import '../../utils/url_launcher.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen(
@@ -52,6 +54,16 @@ class _NewsScreenState extends State<NewsScreen> {
       case PlayStatus.paused:
       default:
         return Icons.play_arrow;
+    }
+  }
+
+  Future<void> shareApp() async {
+    try {
+      const urlPreview = "https://github.com/swarajkumarsingh/S_Dictionary";
+      await Share.share(
+          "GaadiDho is an Instant Bike Washing & Shining Subscription Service. GaadhiDho provides monthly subscription for Bike Wash, We are opening our Bike Washing Points on every 5 km to provide instant bike washing service.Free Download it from Google PlayStore  \n\n$urlPreview");
+    } catch (e) {
+      showSnackBar(msg: "Unable to share, Please try again later.");
     }
   }
 
@@ -109,7 +121,7 @@ class _NewsScreenState extends State<NewsScreen> {
         ),
         actions: [
           InkWell(
-            onTap: () async => await newServices.shareApp(),
+            onTap: () async => await shareApp(),
             child: Container(
               margin: const EdgeInsets.only(right: 16),
               child: const Icon(
@@ -120,7 +132,7 @@ class _NewsScreenState extends State<NewsScreen> {
             ),
           ),
           InkWell(
-            onTap: () async => await newServices.shareApp(),
+            onTap: () async => await shareApp(),
             child: Container(
               margin: const EdgeInsets.only(right: 16),
               child: const Icon(
@@ -139,62 +151,16 @@ class _NewsScreenState extends State<NewsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                child: Image.network(widget.image),
-              ),
+              NewsImageWidget(widget: widget),
               const SizedBox(height: 20),
-              Text(
-                widget.title,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              NewsTitleWidget(widget: widget),
               const SizedBox(height: 20),
-              Text(
-                "Date: ${widget.publishedAt}",
-                style: const TextStyle(
-                    color: Color.fromARGB(255, 81, 81, 81), fontSize: 15),
-              ),
-              Text(
-                "Author: ${widget.author}",
-                style: const TextStyle(
-                    color: Color.fromARGB(255, 81, 81, 81), fontSize: 15),
-              ),
+              NewsPublishedAtWidget(widget: widget),
+              NewsAuthorWidget(widget: widget),
               const SizedBox(height: 20),
-              Text(
-                widget.description,
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              NewsDescWidget(widget: widget),
               const Divider(),
-              InkWell(
-                onTap: () => urlLauncher.launchURL(widget.link),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'More on this news: ',
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: widget.link,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
+              MoreOnThisNewsWidget(widget: widget)
             ],
           ),
         ),

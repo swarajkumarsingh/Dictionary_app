@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:dictionary/pdf_viewer/screens/pdf_screen.dart';
 import 'package:dictionary/utils/snackbar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ import '../widgets/news_tree_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-  static const String routeName = "/home-screen";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -30,7 +30,7 @@ Future<void> pushToPDfScreen() async {
     // Get Pdf path
     final pathString = result.files.first.path.toString();
 
-    // appRouter.push(PdfReaderScreen(path: pathString));
+    appRouter.push(PdfScreen(path: pathString));
   } catch (e) {
     showSnackBar(msg: "Unable to select file");
   }
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           FadeInUp(
             child: IconButton(
-              onPressed: () {},
+              onPressed: () async => await pushToPDfScreen(),
               icon: const Icon(
                 Icons.picture_as_pdf_rounded,
                 color: Colors.black,

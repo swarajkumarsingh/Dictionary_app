@@ -632,6 +632,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+  pdftron_flutter:
+    dependency: "direct main"
+    description:
+      name: pdftron_flutter
+      sha256: a0128f6e7bc9836c6ef2fca29f8bc57413751fc287b3cb146fa4de4d540c53ce
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1-12"
   permission_handler:
     dependency: "direct main"
     description:
