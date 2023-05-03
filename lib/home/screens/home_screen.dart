@@ -1,9 +1,10 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:dictionary/utils/snackbar.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../dictionary/screens/dictionary_screen.dart';
 import '../../utils/navigator.dart';
-import '../../utils/snackbar.dart';
 import '../services/home_services.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/news_tree_widget.dart';
@@ -17,10 +18,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 void _pushToDictionaryScreen() async {
+  appRouter.push(const DictionaryScreen());
+}
+
+Future<void> pushToPDfScreen() async {
   try {
-    appRouter.push(const DictionaryScreen());
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) return;
+
+    // Get Pdf path
+    final pathString = result.files.first.path.toString();
+
+    // appRouter.push(PdfReaderScreen(path: pathString));
   } catch (e) {
-    showSnackBar();
+    showSnackBar(msg: "Unable to select file");
   }
 }
 

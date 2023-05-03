@@ -9,6 +9,14 @@ final sf = _SFClass();
 class _SFClass {
   String DICTIONARY_HISTORY = "DICTIONARY_HISTORY";
 
+  
+  Future<List<String>> getDictionaryHistory() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    List<String> result = prefs.getStringList(DICTIONARY_HISTORY) ?? [];
+    return result;
+  }
+
   Future<List<String>> saveDictionaryHistory(String prompt) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -24,12 +32,6 @@ class _SFClass {
     return result;
   }
 
-  Future<List<String>> getDictionaryHistory() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    List<String> result = prefs.getStringList(DICTIONARY_HISTORY) ?? [];
-    return result;
-  }
 
   Future<void> clearDictionaryHistory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
