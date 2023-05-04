@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isNewUser = true;
+  bool _isNewUser = false;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           elevation: 0,
         ),
       ),
-      home: _isNewUser ? const OnBoardingScreen() : const HomeScreen(),
+      home: _isNewUser == false ? const HomeScreen() : const OnBoardingScreen(),
     );
   }
 }
