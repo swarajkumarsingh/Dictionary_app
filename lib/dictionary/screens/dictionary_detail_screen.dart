@@ -32,18 +32,18 @@ class DictionaryDetailScreen extends StatelessWidget {
       body: FutureBuilder<Dictionary?>(
         future: dictionaryServicesImpl.get(prompt),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData && snapshot.data == null) {
+            const Center(child: Text("No results found"));
+          }
+          if (snapshot.hasError) {
+            return const Center(child: Text("No results found"));
+          }
           if (snapshot.hasData) {
-            if (snapshot.data == null) {
-              const Center(child: Text("No results found"));
-            }
             Dictionary dictionary = snapshot.data;
             return WidgetTree(
               dictionary: dictionary,
               prompt: prompt,
             );
-          }
-          if (snapshot.hasError) {
-            return const Center(child: Text("No results found"));
           }
           return const Loader();
         },
