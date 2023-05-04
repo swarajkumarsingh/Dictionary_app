@@ -2,14 +2,15 @@
 
 import 'package:dictionary/common/string_extension.dart';
 import 'package:dictionary/utils/snackbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sf = _SFClass();
 
 class _SFClass {
   String DICTIONARY_HISTORY = "DICTIONARY_HISTORY";
+  String IS_NEW_USER = "IS_NEW_USER";
 
-  
   Future<List<String>> getDictionaryHistory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -32,7 +33,6 @@ class _SFClass {
     return result;
   }
 
-
   Future<void> clearDictionaryHistory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -41,5 +41,30 @@ class _SFClass {
       return showSnackBar(msg: "Failed to clear history");
     }
     return showSnackBar(msg: "Dictionary history cleared");
+  }
+
+  Future<void> registerNewUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    bool isDeleted = await prefs.setBool(IS_NEW_USER, false);
+    if (!isDeleted) {
+      return showSnackBar(msg: "Failed to register");
+    }
+  }
+
+  Future<bool> isNewUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return prefs.getBool(IS_NEW_USER) ?? true;
+  }
+
+  Future<void> deleteRegisterNewUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    bool isDeleted = await prefs.remove(IS_NEW_USER);
+    if (!isDeleted) {
+      return showSnackBar(msg: "Failed to log out");
+    }
+    return showSnackBar(msg: "User deleted");
   }
 }

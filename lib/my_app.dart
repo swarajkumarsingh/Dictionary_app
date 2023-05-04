@@ -1,6 +1,9 @@
+import 'package:dictionary/home/screens/home_screen.dart';
+import 'package:dictionary/utils/logger.dart';
+import 'package:dictionary/utils/sf.dart';
 import 'package:flutter/material.dart';
 
-import 'home/screens/home_screen.dart';
+import 'onboard/screens/onboarding_screen.dart';
 import 'utils/navigator.dart';
 import 'utils/network/network_utils.dart';
 import 'utils/snackbar.dart';
@@ -13,10 +16,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _isNewUser = true;
+
   @override
   void initState() {
     super.initState();
+    _init();
+  }
+
+  Future<void> _init() async {
     networkUtils.checkNet();
+    bool isNewUser = await sf.isNewUser();
+
+    setState(() {
+      _isNewUser = isNewUser;
+    });
   }
 
   @override
@@ -33,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           elevation: 0,
         ),
       ),
-      home: const HomeScreen(),
+      home: _isNewUser ? const OnBoardingScreen() : const HomeScreen(),
     );
   }
 }
