@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:dictionary/common/drop_menu.dart';
 import 'package:dictionary/home/services/home_services_impl.dart';
 import 'package:dictionary/pdf_viewer/screens/pdf_screen.dart';
 import 'package:dictionary/utils/snackbar.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import '../../dictionary/screens/dictionary_screen.dart';
 import '../../utils/navigator.dart';
-import '../services/home_services.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/news_tree_widget.dart';
 
@@ -74,15 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          FadeInLeft(
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert_rounded,
-                color: Colors.black,
-              ),
-            ),
-          ),
+          FadeInLeft(child: const DropMenu()),
         ],
       ),
       body: SingleChildScrollView(

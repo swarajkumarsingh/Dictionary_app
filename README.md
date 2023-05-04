@@ -9,22 +9,17 @@
 - [x] Image View / Editor
 - [x] PDF viewer / Reader
 - [x] Working functionality onBoarding Screen.
-- [x] Riverpod State-Management.
 - [x] Flutter Routing.
 - [x] Shared Preferences.
-- [x] RealTIme network detection.
+- [x] Real-time network detection.
 - [x] Custom No Internet Screen.
 - [x] Custom Flutter run-time error screen.
 - [x] Code splitting.
-- [x] Firebase Set-Up( change google-services.json file ).
-- [x] Implemented Firebase Google SignIn with state persistence.
-- [x] Implemented Backend API login and register feature UI and controller.
+- [x] Firebase Set-Up ( change google-services.json file ).
 - [x] On runtime error App Re-Start feature
 - [x] App Types of email Validation (name, email, password)
 - [x] Carrousel Slider
 - [x] Custom ListView and GridView
-- [x] Custom Box from ListView and GridView
-- [x] Search Screen
 
 ## Installation
 

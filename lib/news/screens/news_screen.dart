@@ -1,5 +1,8 @@
+import 'package:dictionary/common/drop_menu.dart';
+import 'package:dictionary/constants/color.dart';
 import 'package:dictionary/news/widget/news_widgets.dart';
 import 'package:dictionary/utils/snackbar.dart';
+import 'package:dictionary/utils/url_launcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
@@ -131,17 +134,7 @@ class _NewsScreenState extends State<NewsScreen> {
               ),
             ),
           ),
-          InkWell(
-            onTap: () async => await shareApp(),
-            child: Container(
-              margin: const EdgeInsets.only(right: 16),
-              child: const Icon(
-                Icons.more_vert_outlined,
-                size: 25,
-                color: Colors.black,
-              ),
-            ),
-          ),
+          const DropMenu(),
         ],
       ),
       backgroundColor: Colors.white,

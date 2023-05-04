@@ -1,3 +1,5 @@
+import 'package:dictionary/news/models/news_model.dart';
+
 abstract class HomeServices {
-  Future<List<dynamic>?> getNews();
+  Future<News?> getNews();
 }

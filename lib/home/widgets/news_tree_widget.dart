@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:dictionary/news/models/news_model.dart';
+import 'package:dictionary/utils/logger.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/loader.dart';
@@ -17,7 +21,7 @@ class NewsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<News?>(
       future: client.getNews(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasError) {
@@ -47,18 +51,18 @@ class NewsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List json = snapshot.data as List;
+    News news = snapshot.data as News;
     return ListView.separated(
       shrinkWrap: true,
       physics: const ScrollPhysics(),
-      itemCount: json.length,
+      itemCount: news.articles.length,
       separatorBuilder: (context, index) {
         return const Divider();
       },
       itemBuilder: (context, index) {
         return NewsTreeWidget(
           index: index,
-          json: json,
+          news: news,
         );
       },
     );
@@ -69,11 +73,11 @@ class NewsTreeWidget extends StatelessWidget {
   const NewsTreeWidget({
     super.key,
     required this.index,
-    required this.json,
+    required this.news,
   });
 
   final int index;
-  final List json;
+  final News news;
 
   void pushToDetailNewsScreen(
       {String? title,
@@ -98,14 +102,17 @@ class NewsTreeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String link = json[index]["url"] ?? "No link provided";
-    String author = json[index]["author"] ?? "Unknown";
-    String content = json[index]["content"] ?? "";
-    String description = json[index]["description"] ?? "";
-    String publishedAt =
-        json[index]["publishedAt"] ?? DateTime.now().toString();
-    String title = json[index]["title"] ?? newsTitleStatic;
-    String image = json[index]["urlToImage"] ?? newsImageStatic;
+    String link = news.articles[index].url;
+    String author = news.articles[index].author ?? "Unknown";
+    String content = news.articles[index].content ?? "No content provider";
+    String description =
+        news.articles[index].description ?? "No description provider";
+    String day = news.articles[index].publishedAt.day.toString();
+    String month = news.articles[index].publishedAt.month.toString();
+    String year = news.articles[index].publishedAt.year.toString();
+    String publishedAt = "$day/$month/$year";
+    String title = news.articles[index].title;
+    String image = news.articles[index].urlToImage ?? newsImageStatic;
 
     return GestureDetector(
       onTap: () => pushToDetailNewsScreen(
@@ -118,8 +125,8 @@ class NewsTreeWidget extends StatelessWidget {
         description: description,
       ),
       child: NewsWidget(
-        newsImage: json[index]["urlToImage"] ?? newsImageStatic,
-        newsTitle: json[index]["title"] ?? newsTitleStatic,
+        newsImage: image,
+        newsTitle: title,
       ),
     );
   }
