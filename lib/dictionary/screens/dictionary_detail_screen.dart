@@ -1,14 +1,14 @@
-import '../../common/loader.dart';
-import '../../common/string_extension.dart';
-import '../../constants/color.dart';
-import '../services/dictionary_services_impl.dart';
-import '../../utils/navigator.dart';
-import '../../utils/spaces.dart';
-import '../../utils/tts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../common/loader.dart';
+import '../../common/string_extension.dart';
+import '../../constants/color.dart';
+import '../../utils/navigator.dart';
+import '../../utils/spaces.dart';
+import '../../utils/tts.dart';
 import '../models/dictionary.dart';
+import '../services/dictionary_services_impl.dart';
 
 class DictionaryDetailScreen extends StatelessWidget {
   const DictionaryDetailScreen({super.key, required this.prompt});
@@ -114,8 +114,9 @@ class WidgetTree extends StatelessWidget {
                 ...dictionary.meanings
                     .map(
                       (e) => Container(
-                        width: 50,
+                        // width: 50,
                         height: 30,
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
                         margin: const EdgeInsets.only(right: 10),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -126,7 +127,7 @@ class WidgetTree extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          e.partOfSpeech,
+                          e.partOfSpeech.capitalize,
                           style: const TextStyle(
                             fontSize: 15,
                           ),

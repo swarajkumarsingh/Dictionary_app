@@ -1,6 +1,7 @@
-import 'package:dictionary/constants/color.dart';
-import 'package:dictionary/utils/url_launcher.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/color.dart';
+import '../utils/url_launcher.dart';
 
 class DropMenu extends StatelessWidget {
   const DropMenu({super.key});

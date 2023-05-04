@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:dictionary/common/drop_menu.dart';
-import 'package:dictionary/home/services/home_services_impl.dart';
-import 'package:dictionary/pdf_viewer/screens/pdf_screen.dart';
-import 'package:dictionary/utils/snackbar.dart';
+import '../../common/drop_menu.dart';
+import '../services/home_services_impl.dart';
+import '../../pdf_viewer/screens/pdf_screen.dart';
+import '../../utils/snackbar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 

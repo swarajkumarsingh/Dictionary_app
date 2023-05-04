@@ -1,3 +1,4 @@
+import '../../constants/constants.dart';
 import '../../constants/status_code.dart';
 import '../../services/api.dart';
 import '../models/dictionary.dart';
@@ -9,11 +10,9 @@ class DictionaryServicesImpl extends DictionaryServices {
   @override
   Future<Dictionary?> get(String prompt) async {
     final response = await Api()
-        .get("https://api.dictionaryapi.dev/api/v2/entries/en/$prompt");
+        .get("$DICTIONARY_BASE_URL/$prompt");
 
-    if (response.statusCode == STATUS_OK) {
-      return Dictionary.fromJson(response.data[0]);
-    }
+    if (response.statusCode == STATUS_OK) return Dictionary.fromJson(response.data[0]);
 
     return null;
   }

@@ -15,8 +15,12 @@ class _Environment {
     return dotenv.get(environmentVariables.ENV_SENTRY_DNS, fallback: "");
   }
 
-  String get getNewsApi {
-    return dotenv.get(environmentVariables.NEWS_API, fallback: "");
+  String get NEWS_BASE_URL {
+    return dotenv.get(environmentVariables.NEWS_BASE_URL, fallback: "");
+  }
+
+  String get DICTIONARY_BASE_URL {
+    return dotenv.get(environmentVariables.DICTIONARY_BASE_URL, fallback: "");
   }
 
   String get getSentryEnvironment {

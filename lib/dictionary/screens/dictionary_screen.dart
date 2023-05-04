@@ -6,7 +6,6 @@ import 'package:dictionary/dictionary/screens/dictionary_detail_screen.dart';
 import 'package:dictionary/utils/navigator.dart';
 import 'package:dictionary/utils/sf.dart';
 import 'package:dictionary/utils/spaces.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

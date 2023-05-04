@@ -1,5 +1,5 @@
-import 'package:dictionary/news/screens/news_screen.dart';
-import 'package:dictionary/utils/url_launcher.dart';
+import '../screens/news_screen.dart';
+import '../../utils/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 

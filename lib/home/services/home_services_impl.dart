@@ -11,7 +11,7 @@ class HomeServicesImpl extends HomeServices {
 
     if (response.statusCode == 200) {
       return News.fromJson(response.data);
-    } 
+    }
 
     return null;
   }

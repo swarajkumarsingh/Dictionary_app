@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:dictionary/news/models/news_model.dart';
-import 'package:dictionary/utils/logger.dart';
+import '../../news/models/news_model.dart';
+import '../../utils/logger.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/loader.dart';
