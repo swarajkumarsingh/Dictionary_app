@@ -6,9 +6,9 @@ class _Config {
   String packageNameIOS = "com.example.dictionary";
 }
 
-final bool isInProduction = isDebugModeCustom == false ? false : true;
+final bool isInProduction = _isDebugModeCustom == false ? false : true;
 
-bool get isDebugModeCustom {
+bool get _isDebugModeCustom {
   bool value = false;
   assert(() {
     value = true;
