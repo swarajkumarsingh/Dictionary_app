@@ -2,7 +2,6 @@
 
 import 'package:dictionary/common/string_extension.dart';
 import 'package:dictionary/utils/snackbar.dart';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sf = _SFClass();

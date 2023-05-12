@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:flutter_tts/flutter_tts.dart';
+
 import 'env.dart';
 
 const String poppingFont = 'Poppins';
@@ -9,6 +11,8 @@ String sentryEnvironment = env.getSentryEnvironment;
 
 String newsApiUrl = env.NEWS_BASE_URL;
 String DICTIONARY_BASE_URL = env.DICTIONARY_BASE_URL;
+
+FlutterTts flutterTts = FlutterTts();
 
 const String newsTitleStatic = "Breaking News";
 const String newsImageStatic =

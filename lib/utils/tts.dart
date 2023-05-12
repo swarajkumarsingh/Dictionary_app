@@ -1,20 +1,19 @@
 import 'dart:io';
 
+import 'package:dictionary/constants/constants.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import 'snackbar.dart';
 
-final tts = _TTS(_flutterTts);
-
-FlutterTts _flutterTts = FlutterTts();
+final tts = _TTS(flutterTts);
 String _erroOccured = "Error occured";
 
 class _TTS {
-  _TTS(this.flutterTts);
-  final FlutterTts flutterTts;
+  _TTS(this._flutterTts);
+  final FlutterTts _flutterTts;
 
   // getter for tts package
-  FlutterTts get getTTS => flutterTts;
+  FlutterTts get getTTS => _flutterTts;
 
   Future<void> init() async {
     if (Platform.isIOS) {
@@ -24,7 +23,7 @@ class _TTS {
 
   Future<void> speak(String content) async {
     try {
-      await flutterTts.speak(content);
+      await _flutterTts.speak(content);
     } catch (e) {
       showSnackBar(msg: _erroOccured);
     }
@@ -32,7 +31,7 @@ class _TTS {
 
   Future<void> pause() async {
     try {
-      await flutterTts.pause();
+      await _flutterTts.pause();
     } catch (e) {
       showSnackBar(msg: _erroOccured);
     }
@@ -40,7 +39,7 @@ class _TTS {
 
   Future<void> stop() async {
     try {
-      await flutterTts.stop();
+      await _flutterTts.stop();
     } catch (e) {
       showSnackBar(msg: _erroOccured);
     }
