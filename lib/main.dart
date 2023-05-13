@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:isolate';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:restart_app/restart_app.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'config.dart';
-import 'constants/env.dart';
-import 'error_tracker/error_tracker.dart';
 import 'my_app.dart';
+import 'utils/env/env.dart';
+import 'error_tracker/error_tracker.dart';
 
 void main() => _init();
 
@@ -18,6 +18,7 @@ Future<void> _init() async {
 
     await Firebase.initializeApp();
     await env.initEnv();
+
     FlutterError.onError = errorTracker.onFlutterError;
 
     Isolate.current.addErrorListener(RawReceivePort((pair) async {

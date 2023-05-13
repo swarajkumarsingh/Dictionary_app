@@ -1,7 +1,7 @@
-import 'package:dictionary/home/screens/home_screen.dart';
-import 'package:dictionary/onboard/services/onboarding_service.dart';
-import 'package:dictionary/utils/navigator.dart';
-import 'package:dictionary/utils/sf.dart';
+import '../../home/screens/home_screen.dart';
+import '../../utils/navigator.dart';
+import '../../utils/sf.dart';
+import 'onboarding_service.dart';
 
 final onBoardingService = OnBoardingServiceImpl();
 

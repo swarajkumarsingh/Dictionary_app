@@ -1,11 +1,8 @@
-import 'dart:async';
-
-import '../../news/models/news_model.dart';
-import '../../utils/logger.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/loader.dart';
 import '../../constants/constants.dart';
+import '../../news/models/news_model.dart';
 import '../../news/screens/news_screen.dart';
 import '../../utils/navigator.dart';
 import '../services/home_services.dart';

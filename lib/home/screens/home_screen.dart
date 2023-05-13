@@ -1,13 +1,13 @@
 import 'package:animate_do/animate_do.dart';
-import '../../common/drop_menu.dart';
-import '../services/home_services_impl.dart';
-import '../../pdf_viewer/screens/pdf_screen.dart';
-import '../../utils/snackbar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/drop_menu.dart';
 import '../../dictionary/screens/dictionary_screen.dart';
+import '../../pdf_viewer/screens/pdf_screen.dart';
 import '../../utils/navigator.dart';
+import '../../utils/snackbar.dart';
+import '../services/home_services_impl.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/news_tree_widget.dart';
 

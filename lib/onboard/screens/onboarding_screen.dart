@@ -1,6 +1,6 @@
-import 'package:dictionary/common/loader.dart';
-import 'package:dictionary/onboard/services/onboarding_service_impl.dart';
-import 'package:dictionary/onboard/widgets/onboarding_screen_button_widget.dart';
+import '../../common/loader.dart';
+import '../services/onboarding_service_impl.dart';
+import '../widgets/onboarding_screen_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 

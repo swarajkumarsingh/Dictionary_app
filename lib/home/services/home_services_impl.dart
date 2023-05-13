@@ -1,8 +1,7 @@
-import 'package:dictionary/constants/constants.dart';
-import 'package:dictionary/news/models/news_model.dart';
-import 'package:dictionary/services/api.dart';
-
-import 'package:dictionary/home/services/home_services.dart';
+import '../../constants/constants.dart';
+import '../../news/models/news_model.dart';
+import '../../services/api.dart';
+import 'home_services.dart';
 
 class HomeServicesImpl extends HomeServices {
   @override

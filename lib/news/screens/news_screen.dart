@@ -1,14 +1,11 @@
-import '../../common/drop_menu.dart';
-import '../../constants/color.dart';
-import '../widget/news_widgets.dart';
-import '../../utils/snackbar.dart';
-import '../../utils/url_launcher.dart';
-
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../utils/tts.dart';
+import '../../common/drop_menu.dart';
 import '../../utils/navigator.dart';
+import '../../utils/snackbar.dart';
+import '../../utils/tts.dart';
+import '../widget/news_widgets.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen(

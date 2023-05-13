@@ -1,6 +1,5 @@
-import 'package:dictionary/home/screens/home_screen.dart';
-import 'package:dictionary/utils/logger.dart';
-import 'package:dictionary/utils/sf.dart';
+import 'home/screens/home_screen.dart';
+import 'utils/sf.dart';
 import 'package:flutter/material.dart';
 
 import 'onboard/screens/onboarding_screen.dart';

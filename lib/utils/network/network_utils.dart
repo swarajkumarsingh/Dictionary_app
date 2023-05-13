@@ -1,4 +1,4 @@
-import 'package:dictionary/utils/sf.dart';
+import '../sf.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../../common/check_internet_screen.dart';

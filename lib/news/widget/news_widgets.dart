@@ -1,6 +1,7 @@
-import '../screens/news_screen.dart';
-import '../../utils/url_launcher.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/url_launcher.dart';
+import '../screens/news_screen.dart';
 
 
 class NewsImageWidget extends StatelessWidget {

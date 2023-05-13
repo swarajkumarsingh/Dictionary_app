@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dictionary/constants/constants.dart';
+import '../constants/constants.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import 'snackbar.dart';
